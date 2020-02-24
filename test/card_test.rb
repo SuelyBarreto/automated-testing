@@ -17,23 +17,29 @@ describe Card do
       # raise ArgumentError.new
       expect {Card.new(0, :diamonds)}.must_raise ArgumentError
       expect {Card.new(14, :diamonds)}.must_raise ArgumentError
-      expect {Card.new(14, :clovers)}.must_raise ArgumentError
+      expect {Card.new(14, :hearts)}.must_raise ArgumentError
+      expect {Card.new(10, :clovers)}.must_raise ArgumentError
+
     end
   end
 
   describe "Testing to_s" do
-
     it "to_s returns a readable String value logically for values 2-10" do
       # Test to ensure that to_s works for cards values 2-10
       # for example:  "2 of diamonds"
+      expect(Card.new(2, :diamonds).to_s).must_equal "2 of diamonds"
+      expect(Card.new(4, :spades).to_s).must_equal "4 of spades"
+      expect(Card.new(8, :clubs).to_s).must_equal "8 of clubs"
+      expect(Card.new(10, :hearts).to_s).must_equal "10 of hearts"
     end
 
     it "to_s returns a readable String value for Ace, Jack, Queen, King" do
       # Test to ensure that to_s works for cards values 1, and 11-13
       # For example: "Queen of hearts"
-      # The current implementation of to_s does not address this feature
-      # Write the test, see it fail, then modify to_s to make it pass!
-      # (Consider writing a helper method!)
+      expect(Card.new(1, :diamonds).to_s).must_equal "Ace of diamonds"
+      expect(Card.new(11, :spades).to_s).must_equal "Jack of spades"
+      expect(Card.new(12, :clubs).to_s).must_equal "Queen of clubs"
+      expect(Card.new(13, :hearts).to_s).must_equal "King of hearts"
     end
   end
 
@@ -41,6 +47,7 @@ describe Card do
 
     it "Can retrieve the value of the card using a `.value`." do
       # ensure that `.value works as expected`
+
     end
 
     it "Can retrieve the value of the card using a `.suit`." do
