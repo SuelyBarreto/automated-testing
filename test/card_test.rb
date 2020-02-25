@@ -1,8 +1,8 @@
 require_relative 'test_helper'
 
 describe Card do
+  
   describe "You can create a Card instance" do
-
     it "Can be created" do
       [:hearts, :spades, :clubs, :diamonds].each do |suit|
         (1..13).each do |value|
@@ -17,9 +17,7 @@ describe Card do
       # raise ArgumentError.new
       expect {Card.new(0, :diamonds)}.must_raise ArgumentError
       expect {Card.new(14, :diamonds)}.must_raise ArgumentError
-      expect {Card.new(14, :hearts)}.must_raise ArgumentError
-      expect {Card.new(10, :clovers)}.must_raise ArgumentError
-
+      expect {Card.new(14, :clovers)}.must_raise ArgumentError
     end
   end
 
@@ -44,14 +42,20 @@ describe Card do
   end
 
   describe "Reader methods" do
-
     it "Can retrieve the value of the card using a `.value`." do
       # ensure that `.value works as expected`
-
+      expect(Card.new(1, :diamonds).value).must_equal 1
+      expect(Card.new(11, :spades).value).must_equal 11
+      expect(Card.new(12, :clubs).value).must_equal 12
+      expect(Card.new(13, :hearts).value).must_equal 13
     end
 
     it "Can retrieve the value of the card using a `.suit`." do
       # ensure that `.suit works as expected returning the symbol of the suit`
+      expect(Card.new(1, :diamonds).suit).must_equal :diamonds
+      expect(Card.new(11, :spades).suit).must_equal :spades
+      expect(Card.new(12, :clubs).suit).must_equal :clubs
+      expect(Card.new(13, :hearts).suit).must_equal :hearts
 
     end
   end
